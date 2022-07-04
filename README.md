@@ -12,4 +12,4 @@ The next tools are pair, one (**wzip**) is a file compression tool, and the othe
 ## Footnotes
 The full description of the details of each program and the set of tests: https://github.com/remzi-arpacidusseau/ostep-projects/tree/master/initial-utilities.
 
-If you are going to run tests, please read the instructions: https://github.com/remzi-arpacidusseau/ostep-projects#projects-for-an-operating-systems-class
+If you are going to run tests, please read the instruction: https://github.com/remzi-arpacidusseau/ostep-projects#projects-for-an-operating-systems-class
