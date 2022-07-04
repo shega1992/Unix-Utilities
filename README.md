@@ -10,3 +10,6 @@ The second utility is **wgrep**, a variant of the UNIX tool **grep**. This tool 
 ## wzip and wunzip
 The next tools are pair, one (**wzip**) is a file compression tool, and the other (**wunzip**) is a file decompression tool. The type of compression used here is a simple form of compression called run-length encoding (RLE). RLE is quite simple: when you encounter **n** characters of the same type in a row, the compression tool (**wzip**) will turn that into the number **n** and a single instance of the character.
 ## Footnotes
+The full description of the details of each program and the set of tests: https://github.com/remzi-arpacidusseau/ostep-projects/tree/master/initial-utilities.
+
+If you are going to run tests, please read the instructions: https://github.com/remzi-arpacidusseau/ostep-projects#projects-for-an-operating-systems-class
