@@ -20,14 +20,32 @@ int main(int argc, char * argv[])
      else
      {
 	  p = (pthread_t * ) calloc(argc - 1, sizeof(pthread_t));
+	  if(p == NULL)
+	  {
+	       printf("wzip: cannot allocate memory\n");
+	       exit(1);
+	  }
 	  buffers = (char ** ) calloc(argc - 1, sizeof(char * ));
+	  if(buffers == NULL)
+	  {
+	       printf("wzip: cannot allocate memory\n");
+	       exit(1);
+	  }
 
-	  for(int i = 1; i < argc; i++)
-	       pthread_create(&p[i - 1], NULL, fill_buf, argv[i]);
-
+	  for(int i = 1; i < argc; i++) 
+	       if(pthread_create(&p[i - 1], NULL, fill_buf, argv[i]))
+	       {
+		    printf("wzip: cannot create thread\n");
+		    exit(1);
+	       }
+	       
 	  for(int i = 0; i < argc - 1; i++)
-	       pthread_join(p[i], (void ** ) &buffers[i]);
-
+	       if(pthread_join(p[i], (void ** ) &buffers[i]))
+	       {
+		    printf("wzip: cannot wait for thread\n");
+		    exit(1);
+	       }
+	  
 	  compress(concatenation(buffers, argc - 1));
 
      }
@@ -77,6 +95,11 @@ char * concatenation(char ** buffers, int size)
 	  count += strlen(buffers[i]);
 
      buf = (char *) calloc(count + 1, sizeof(char)); // + 1 for '\0'
+     if(buf == NULL)
+     {
+	  printf("wzip: cannot allocate memory\n");
+          exit(1);
+     }
 
      strcpy(buf, buffers[0]);
      for(int i = 1; i < size; i++)
