@@ -9,6 +9,9 @@ The program **wcat** is a simple program. Generally, it reads a file as specifie
 The second utility is **wgrep**, a variant of the UNIX tool **grep**. This tool looks through a file, line by line, trying to find a user-specified search term in the line. If a line has the word within it, the line is printed out, otherwise it is not. Program **wgrep** is always passed a search term and zero or more files to grep through (thus, more than one is possible). 
 ## wzip and wunzip
 The next tools are pair, one (**wzip**) is a file compression tool, and the other (**wunzip**) is a file decompression tool. The type of compression used here is a simple form of compression called run-length encoding (RLE). RLE is quite simple: when you encounter **n** characters of the same type in a row, the compression tool (**wzip**) will turn that into the number **n** and a single instance of the character.
+## pzip
+The program **pzip** is multithreaded version of **wzip**. Description: https://github.com/remzi-arpacidusseau/ostep-projects/tree/master/concurrency-pzip.
+I've used threads to process multiple input files simultaneously.  However, I don't think it's a good idea to use multithreading to write such a project.
 ## Footnotes
 The full description of the details of each program and the set of tests: https://github.com/remzi-arpacidusseau/ostep-projects/tree/master/initial-utilities.
 
