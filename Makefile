@@ -1,4 +1,4 @@
-all: wcat wgrep wunzip wzip pzip
+all: wcat wgrep wunzip wzip pzip wtee
 
 wcat: wcat.c
 	gcc -o wcat wcat.c -Wall -Werror
@@ -15,5 +15,8 @@ wzip: wzip.c
 pzip: pzip.c
 	gcc -o pzip pzip.c -Wall -Werror -pthread
 
+wtee: wtee.c
+	gcc -o wtee wtee.c -Wall -Werror
+
 clean:
-	rm -f wcat wgrep wunzip wzip pzip
+	rm -f wcat wgrep wunzip wzip pzip wtee
