@@ -1,5 +1,5 @@
 # Unix-Utilities
-This repository holds the source code for initial projects( more exactly for unix utilities) from OSTEP https://github.com/remzi-arpacidusseau/ostep-projects.
+This repository holds the source code for initial projects( more exactly for unix utilities) from OSTEP https://github.com/remzi-arpacidusseau/ostep-projects. I also added a few additional unix utilities.
 
 To compile: **make all** (you can also compile files individually).
 
@@ -12,7 +12,9 @@ The next tools are pair, one (**wzip**) is a file compression tool, and the othe
 ## pzip
 The program **pzip** is multithreaded version of **wzip**. Description: https://github.com/remzi-arpacidusseau/ostep-projects/tree/master/concurrency-pzip.
 I've used threads to process multiple input files simultaneously.  However, I don't think it's a good idea to use multithreading to write such a project.
+## wtee
+The idea for the utility is taken from The Linux Programming Interface(See Exercise 4-1) https://man7.org/tlpi/. The program can accept one or more files as command line arguments or work without arguments. This distinguishes it from the program specification proposed in the book (one file as a command line argument). Also, when writing the program, I did not use the **getopt()** function. The command line option **-a** works when it is passed after the program name, but before the file name(s). You can use the program as follows: **./wtee [-a] [file] ...** 
 ## Footnotes
-The full description of the details of each program and the set of tests: https://github.com/remzi-arpacidusseau/ostep-projects/tree/master/initial-utilities.
+The full description of the details of each program from OSTEP and the set of tests: https://github.com/remzi-arpacidusseau/ostep-projects/tree/master/initial-utilities.
 
 If you are going to run tests, please read the instruction: https://github.com/remzi-arpacidusseau/ostep-projects#projects-for-an-operating-systems-class
