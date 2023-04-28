@@ -43,6 +43,7 @@ int main(int argc, char * argv[])
 	       if((fd[i] = open(argv[i + 2], O_WRONLY | O_CREAT | O_APPEND, 0664)) == -1)
 	       {
 		    fprintf(stderr, "Couldn't open %s : %s\n", argv[i + 2], strerror(errno));
+		    free(fd);
 		    exit(EXIT_FAILURE);
 	       }
 
@@ -51,6 +52,7 @@ int main(int argc, char * argv[])
 	       if(write(STDOUT_FILENO, buf, numRead) != numRead)
 	       {
 		    fputs("Couldn't write whole buffer to standard output\n", stderr);
+		    free(fd);
 		    exit(EXIT_FAILURE);
 	       }
 	       
@@ -58,6 +60,7 @@ int main(int argc, char * argv[])
 		    if(write(fd[i], buf, numRead) != numRead)
 		    {
 			 fprintf(stderr, "Couldn't write whole buffer to %s\n", argv[i + 2]);
+			 free(fd);
 			 exit(EXIT_FAILURE);
 		    }
 	  }
@@ -65,12 +68,14 @@ int main(int argc, char * argv[])
 	  if(numRead == -1)
 	  {
 	       fprintf(stderr, "read : %s\n", strerror(errno));
+	       free(fd);
 	       exit(EXIT_FAILURE);
 	  }
 	  for(int i = 0; i < argc - 2; i++)
 	       if(close(fd[i]) == -1)
 	       {
 		    fprintf(stderr, "Couldn't close %s : %s\n", argv[i + 2], strerror(errno));
+		    free(fd);
 		    exit(EXIT_FAILURE);
 	       }
 	       
@@ -90,6 +95,7 @@ int main(int argc, char * argv[])
 	       if((fd[i] = open(argv[i + 1], O_WRONLY | O_CREAT | O_TRUNC, 0664)) == -1)
 	       {
 		    fprintf(stderr, "Couldn't open %s : %s\n", argv[i + 1], strerror(errno));
+		    free(fd);
 		    exit(EXIT_FAILURE);
 	       }
 	  
@@ -98,6 +104,7 @@ int main(int argc, char * argv[])
 	       if(write(STDOUT_FILENO, buf, numRead) != numRead)
 	       {
 		    fputs("Couldn't write whole buffer to standard output\n", stderr);
+		    free(fd);
 		    exit(EXIT_FAILURE);
 	       }
 	       
@@ -105,6 +112,7 @@ int main(int argc, char * argv[])
 		    if(write(fd[i], buf, numRead) != numRead)
 		    {
 			 fprintf(stderr, "Couldn't write whole buffer to %s\n", argv[i + 1]);
+			 free(fd);
 			 exit(EXIT_FAILURE);
 		    }
 	  }
@@ -112,12 +120,14 @@ int main(int argc, char * argv[])
 	  if(numRead == -1)
 	  {
 	       fprintf(stderr, "read : %s\n", strerror(errno));
+	       free(fd);
 	       exit(EXIT_FAILURE);
 	  }
 	  for(int i = 0; i < argc - 1; i++)
 	       if(close(fd[i]) == -1)
 	       {
 		    fprintf(stderr, "Couldn't close %s : %s\n", argv[i + 1], strerror(errno));
+		    free(fd);
 		    exit(EXIT_FAILURE);
 	       }
 
