@@ -16,6 +16,8 @@ I've used threads to process multiple input files simultaneously.  However, I do
 The idea for the utility is taken from The **Linux Programming Interface**(See Exercise 4-1) https://man7.org/tlpi/. The program can accept one or more files as command line arguments or work without arguments. This distinguishes it from the program specification proposed in the book (one file as a command line argument). Also, when writing the program, I did not use the **getopt()** function. The command line option **-a** works when it is passed after the program name, but before the file name(s). You can use the program as follows: **./wtee [-a] [file] ...** 
 ## wcp
 The idea for the utility is also taken from The **Linux Programming Interface**(See Exercise 4-2) https://man7.org/tlpi/. This is a much simplified version of the Linux **cp** command. **wcp** doesn't support command line options and therefore does not allow copying a directory to a directory. You can use this program to copy a single file to a file or directory, as well as multiple files to a directory. File holes are supported.
+## wtail
+The idea for the utility is also taken from The **Linux Programming Interface**(See Exercise 13-5) https://man7.org/tlpi/. This is simplified version of the Linux **tail** command that supports **-n** command line option. You can use the program as follows: **./wtail [ -n num ] file**
 ## Footnotes
 The full description of the details of each program from OSTEP and the set of tests: https://github.com/remzi-arpacidusseau/ostep-projects/tree/master/initial-utilities.
 
